@@ -1,8 +1,9 @@
+from ssl import create_default_context
 from smtplib import SMTP, SMTPException
-import ssl
 from email.message import EmailMessage
 from email.headerregistry import Address
 from secrets import randbelow
+import re
 
 from api.config import smtp_user, smtp_password, smtp_server, smtp_port
 
@@ -12,7 +13,7 @@ def check_password(password: str) -> bool:
 
 
 def check_email(email: str) -> bool:
-    return True
+    return True if re.match(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)", email) else False
 
 
 def send_validation_email(email: str, username: str) -> str:
@@ -33,7 +34,7 @@ def send_validation_email(email: str, username: str) -> str:
     mail.set_content(template_text.format(user=username, code=secret_digits))
     mail.add_alternative(template.format(user=username, code=secret_digits), subtype="html")
 
-    context = ssl.create_default_context()
+    context = create_default_context()
 
     server: SMTP | None = None
 
@@ -53,7 +54,3 @@ def send_validation_email(email: str, username: str) -> str:
             server.quit()
 
     return secret_digits
-
-
-if __name__ == '__main__':
-    send_validation_email("woelfchen@locrealloc.de", "Woelfchen")
