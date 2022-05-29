@@ -59,5 +59,4 @@ def index():
     return "Hello, World", 200
 
 
-#db.drop_all()
 db.create_all()

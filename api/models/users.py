@@ -16,13 +16,7 @@ class User(db.Model):
 
     @staticmethod
     def create(username: str, email: str, password: str, is_admin: str = False, activated: bool = False):
-        user = User(
-            username=username,
-            email=email,
-            password=password,
-            is_admin=is_admin,
-            activated=activated
-        )
+        user = User(username=username, email=email, password=password, is_admin=is_admin, activated=activated)
 
         db.add(user)
 

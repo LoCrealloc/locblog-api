@@ -28,6 +28,4 @@ config["JWT_COOKIE_CSRF_PROTECT"] = True  # You should always set this to 'True'
 # do not change the stuff below
 
 config["SQLALCHEMY_DATABASE_URI"] = f"postgresql://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}"
-config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-
+config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False

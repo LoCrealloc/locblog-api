@@ -38,9 +38,7 @@ def register():
 
     rds.setex(name=f"user_validation:{user.id}", time=(5 * 60), value=secret_digits)
 
-    return jsonify(
-        {"msg": "user has been created successful", "user_id": str(user.id)}
-    ), 200
+    return jsonify({"msg": "user has been created successful", "user_id": str(user.id)}), 200
 
 
 @auth.route("/register/validate", methods=["POST"])
