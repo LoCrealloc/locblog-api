@@ -9,7 +9,9 @@ from api.config import smtp_user, smtp_password, smtp_server, smtp_port
 
 
 def check_password(password: str) -> bool:
-    return True
+    # At least one uppercase, at least one lowercase, at least one number, at least 12 characters
+
+    return True if re.match(r"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?\d).{12,}$", password) else False
 
 
 def check_email(email: str) -> bool:
