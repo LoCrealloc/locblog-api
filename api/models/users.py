@@ -1,4 +1,3 @@
-from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, Integer, Text, Boolean
 
 from api.database import DB, db
@@ -7,6 +6,8 @@ db: DB
 
 
 class User(db.Model):
+    __tablename__ = "users"
+
     id = Column(Integer, primary_key=True, autoincrement=True)
     username = Column(Text)
     email = Column(Text)
