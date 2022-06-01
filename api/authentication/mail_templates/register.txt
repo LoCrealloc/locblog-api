@@ -1,0 +1,5 @@
+Hello {user},
+Welcome to LoCblog.
+Please finish registration by entering the following code:
+
+{code}

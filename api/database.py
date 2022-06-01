@@ -7,6 +7,9 @@ class DB(SQLAlchemy):
         self.session.add(obj)
         self.session.commit()
 
+    def update(self, obj):
+        self.session.commit()
+
 
 db = DB()
 
