@@ -28,6 +28,7 @@ jobs:
         run: |
           pip install poetry
           poetry install -n --no-root
+          poetry shell
 
       - name: Check code formatting with black
         run: poe black --diff --check
